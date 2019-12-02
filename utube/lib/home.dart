@@ -1,3 +1,4 @@
+// https://github.com/wichit2s/mobile-week04
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -8,7 +9,8 @@ class MyHomePage extends StatefulWidget {
   var images = <String>['99', '106', '1079', '1000'];
   var titles = <String>[
     'การเขียนโปรแกรม', 'การเขียนเว็บ', 'การเขียนโมบายแอพ', 'การออกแบบระบบ'];
-  var selected = <bool>[ true, false, false, false ];
+  // var selected = <bool>[ true, false, false, false ];
+  var selectedIndex = 0;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -37,10 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
           // children: List.generate(10, (i) { return i*i; })
           children: List.generate(widget.images.length, (i) {
             return ListTile(
+              onTap: () { 
+                setState( () {
+                  widget.selectedIndex = i; 
+                  print('กดที่ index = ${widget.selectedIndex}');
+                } );
+              },
               contentPadding: EdgeInsets.all(5),
               title: Image.network('https://picsum.photos/id/${widget.images[i]}/800/600'),
               // subtitle: Text("${widget.titles[i]}"),
-              subtitle: (widget.selected[i])? 
+              subtitle: (widget.selectedIndex == i)? 
                 Row(
                   children: <Widget>[
                     CircleAvatar(backgroundImage: NetworkImage('https://picsum.photos/id/${widget.images[i]}/800/600'),
