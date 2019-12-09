@@ -17,6 +17,7 @@ import 'package:flutter/foundation.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'detail.dart';
 import 'home.dart';
 
 void main() {
@@ -36,7 +37,12 @@ class MyApp extends StatelessWidget {
         // See https://github.com/flutter/flutter/wiki/Desktop-shells#fonts
         fontFamily: 'Sarabun',
       ),
-      home: MyHomePage(title: 'ยูทิว-utube'),
+      // home: MyHomePage(title: 'ยูทิว-utube'),
+      initialRoute: '/home',
+      routes: {
+        '/home': (cxt) => MyHomePage(title: 'ยูทิว - utube'),
+        '/detail': (cxt) => DetailPage(title: '', image: ''),
+      },
     );
   }
 }
